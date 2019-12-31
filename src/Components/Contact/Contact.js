@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Tabs, Card, List, Spin, Icon } from 'antd';
+import { Tabs, Spin } from 'antd';
 import styles from './Contact.module.scss'
 import ContactItem from '../ContactItem/ContactItem'
 import {CONFIG} from '../../Config'
