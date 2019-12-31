@@ -1,0 +1,73 @@
+// Converts px based sizes to rem
+// -----------------------------------------------------------------------------
+@mixin size($pxValue, $property: "font-size", $standard-size: 16) {
+  #{$property}: $pxValue/$standard-size + rem;
+}
+
+// Min width media queries
+$fix-mqs : false !default;
+
+// Media query helpers
+// -----------------------------------------------------------------------------
+// Media query min-width based
+@mixin mq($name) {
+  @if $fix-mqs {
+    @if $fix-mqs>=map-get($grid-breakpoints, $name) {
+      @content;
+    }
+  }
+
+  @else {
+    @if not map-has-key($grid-breakpoints, $name) {
+      @warn "Warning: `#{$name}` is not a valid breakpoint name, get your shit together!";
+    }
+
+    @else {
+      @media (min-width: map-get($grid-breakpoints, $name)) {
+        @content;
+      }
+    }
+  }
+}
+
+
+
+@mixin blue_gradiant() {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,176,190,1) 0%, rgba(33,88,147,1) 50%, rgba(28,49,128,1) 100%);
+}
+
+// Links
+// -----------------------------------------------------------------------------
+@mixin link_button() {
+  color: $white;
+  align-items: center;
+  font-weight: normal;
+  @include size(16);
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  padding-right: $default-space * 2;
+  padding-left: $default-space * 2;
+  padding-top: $default-space;
+  padding-bottom: $default-space;
+  transition: all .2s;
+  display: inline-flex;
+  border-radius: $border-radius-lg;
+  @include blue_gradiant;
+  i{
+    padding-right: .5rem;
+  }
+}
+
+
+@mixin redGradiant() {
+  background: rgba(248,80,50,1);
+  background: -moz-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,1) 32%, rgba(247,75,52,1) 40%, rgba(240,75,53,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(248,80,50,1)), color-stop(32%, rgba(248,80,50,1)), color-stop(40%, rgba(247,75,52,1)), color-stop(51%, rgba(240,75,53,1)), color-stop(71%, rgba(240,47,23,1)), color-stop(100%, rgba(231,56,39,1)));
+  background: -webkit-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,1) 32%, rgba(247,75,52,1) 40%, rgba(240,75,53,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -o-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,1) 32%, rgba(247,75,52,1) 40%, rgba(240,75,53,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -ms-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,1) 32%, rgba(247,75,52,1) 40%, rgba(240,75,53,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: linear-gradient(to right, rgba(248,80,50,1) 0%, rgba(248,80,50,1) 32%, rgba(247,75,52,1) 40%, rgba(240,75,53,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+}

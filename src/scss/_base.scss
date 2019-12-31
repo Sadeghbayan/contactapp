@@ -1,0 +1,9 @@
+.container {
+  margin-left: $default-space * .7;
+  margin-right: $default-space * .7;
+  @include mq(md){
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

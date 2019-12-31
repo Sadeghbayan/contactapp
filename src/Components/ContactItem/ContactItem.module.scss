@@ -1,0 +1,103 @@
+@import "../../scss/utils/mixin";
+@import "../../scss/utils/config";
+
+
+.listItemInner{
+  border-bottom: 1px solid $mid-gray;
+  padding: $default-space*.7 0;
+}
+.fixedHeight {
+  height: 50px;
+}
+
+.autoHeight{
+  height: auto;
+}
+
+
+// Contact Card
+
+.contactCard{
+  position: relative;
+  display: flex;
+  width: 100%;
+  background: $main-color-darker;
+  padding: 2em;
+  box-shadow: 0 0px 20px 0px $silver inset;
+  border-radius: 5px;
+  margin-bottom: $default-space;
+  flex-direction: column;
+  text-align: center;
+  @include mq(lg){
+    flex-direction: row;
+    text-align: inherit;
+  }
+  .information {
+    @include mq(lg){
+      flex-basis: 70%;
+    }
+    .fullname {
+      color: #a0a0a0;
+      @include size(19);
+      margin-bottom: $default-space;
+    }
+    .item {
+      display: flex;
+      flex-wrap: wrap;
+      span {
+        text-align: right;
+        flex-basis: 70%;
+        @include mq(lg){
+          text-align: inherit;
+        }
+      }
+      label{
+        margin-right: $default-space * .4;
+        font-weight: bold;
+        flex-basis: 27%;
+        @include size(13);
+        text-align: left;
+        @include mq(lg){
+          text-align: inherit;
+        }
+      }
+    }
+  }
+  .photo{
+    flex-basis: 20%;
+    img{
+      border-radius: $border-radius-lg;
+      border: 1px solid #c1c1c1;
+      box-shadow: 0px 0px 3px 0px #111;
+    }
+  }
+  .username{
+    padding: $default-space*.15 $default-space*.6;
+    margin-top: $default-space * .5;
+    color: white;
+    @include size(13);
+    @include redGradiant();
+    @include mq(lg){
+      transform: rotate(90deg) translate(100%, -100%);
+      transform-origin: 100% 0;
+      position: absolute;
+      top: -15px;
+      right: 43px;
+      margin-top: auto;
+    }
+    label{
+      text-transform: uppercase;
+      margin-right: $default-space * .4;
+      @include size(13)
+    }
+  }
+  .closeIcon{
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    cursor: pointer;
+    i {
+      color: #a0a0a0;
+    }
+  }
+}
